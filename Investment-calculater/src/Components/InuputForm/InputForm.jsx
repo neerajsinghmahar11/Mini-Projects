@@ -29,7 +29,7 @@ const InputForm = ({ onSubmitForm }) => {
         setFormData((prev) => {
             return {
                 ...prev,
-                [input]: value,
+                [input]: +value,
             }
         })
     }
