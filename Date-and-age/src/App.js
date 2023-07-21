@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import './App.css';
-import UserInput from './UserInput/UserInput';
-import ItemsList from './ItemsList/ItemsList';
+import UserInput from './Components/UserInput/UserInput';
+import ItemsList from './Components/ItemsList/ItemsList';
+
 
 
 function App() {
   let [data,setData]=useState([]);
+
 
   const showData=(inputData)=>{
     setData(prev => {

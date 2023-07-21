@@ -16,5 +16,6 @@
     width: 35rem;
     border-radius: 10px;
     height: 25px;
+    padding: 0px 0px 0px 8px;
     border: 1px solid grey;
 }
