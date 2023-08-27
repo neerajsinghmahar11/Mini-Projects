@@ -7,12 +7,18 @@ import MealItem from './MealItem/MealItem';
 
 const AvailableMeals = () => {
   const [meals,setMeals]=useState();
+  const [isLoading,setIsLoading]=useState(true);
+  const [httpError,setHttpError]=useState();
 
 useEffect(()=>{
 
   const getData=async()=>{
-    let mealsData=[];    
+    let mealsData=[];
     const res=await fetch(`https://food-ordering-a6827-default-rtdb.firebaseio.com/meals.json`)
+    if(!res.ok){
+      throw new Error("Something went wrong!")
+    }
+
     const data=await res.json();
     
     for(let key in data){
@@ -24,19 +30,31 @@ useEffect(()=>{
       })
     }
     setMeals(mealsData);
+    setIsLoading(false);
   }
   getData()
 },[])
 
-    const mealsList= meals.map((meal)=> (
+
+let mealsList=[];
+if(isLoading){
+  return mealsList=<section className={classes.isLoading}>
+    <h1>Loading...</h1>
+  </section>
+}else{
+
+  mealsList= meals.map((meal)=> (
     <MealItem
-      key={meal.id}
-      id={meal.id}
-      name={meal.name}
-      description={meal.description}
-      price={meal.price}
+    key={meal.id}
+    id={meal.id}
+    name={meal.name}
+    description={meal.description}
+    price={meal.price}
     />))
-  return (
+  }
+
+
+    return (
     <section className={classes.meals}>
         <Card>
         <ul>{mealsList}</ul>
