@@ -47,32 +47,27 @@ const Checkout = (props) => {
 
     return (
         <form className={classes.form} onSubmit={confirmHandler}>
-            <div className={classes.control}>
+            <div className={`${classes.control} ${formInputValidity.name ? '' : classes.invalid}`}>
                 <label htmlFor='name'>Your Name</label>
                 <input ref={nameInputRef} type='text' id='name' />
                 {!formInputValidity.name && <p>Please enter a valid name!</p>}
             </div>
-            <div className={classes.control}>
+            <div className={`${classes.control} ${formInputValidity.street ? '' : classes.invalid}`}>
                 <label htmlFor='street'>Street</label>
                 <input ref={streetInputRef} type='text' id='street' />
                 {!formInputValidity.street && <p>Please enter a valid street!</p>}
             </div>
-            <div className={classes.control}>
+            <div className={`${classes.control} ${formInputValidity.postalCode ? '' : classes.invalid}`}>
                 <label htmlFor='postal'>Postal Code</label>
                 <input ref={postalCodeInputRef} type='text' id='postal' />
-                {!formInputValidity.postalCode && <p>Please enter a valid postal code !</p>}
+                {!formInputValidity.postalCode && <p>Please enter a valid postal code (6 digit long code) !</p>}
             </div>
-            <div className={classes.control}>
+            <div className={`${classes.control} ${formInputValidity.city ? '' : classes.invalid}`}>
                 <label htmlFor='city'>City</label>
                 <input ref={cityInputRef} type='text' id='city' />
                 {!formInputValidity.city && <p>Please enter a valid city!</p>}
             </div>
-            <div className={classes.actions}>
-                <button type='button' onClick={props.onCancel}>
-                    Cancel
-                </button>
-                <button className={classes.submit}>Confirm</button>
-            </div>
+            
         </form>
     );
 };
