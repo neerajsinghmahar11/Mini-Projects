@@ -67,7 +67,12 @@ const Checkout = (props) => {
                 <input ref={cityInputRef} type='text' id='city' />
                 {!formInputValidity.city && <p>Please enter a valid city!</p>}
             </div>
-        
+            <div className={classes.actions}>
+                <button type='button' onClick={props.onCancel}>
+                    Cancel
+                </button>
+                <button className={classes.submit}>Confirm</button>
+            </div>
         </form>
     );
 };
