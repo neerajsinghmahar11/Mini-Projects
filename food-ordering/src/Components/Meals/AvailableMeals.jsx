@@ -14,7 +14,7 @@ const AvailableMeals = () => {
 
     const getData = async () => {
       let mealsData = [];
-      const res = await fetch(`https://food-ordering-a6827-default-rtdb.firebaseio.com/meals.json`)
+      const res = await fetch(`https://food-ordering-12eb4-default-rtdb.firebaseio.com/meals.json`)
       if (!res.ok) {
         throw new Error("Something went wrong!")
       }
